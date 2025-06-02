@@ -570,15 +570,15 @@ function page() {
       image: "/Ai.png"
     },
     {
-      title: "Recommendation Letter",
+      title: "Internship",
       issuer: "CodeClause",
       date: "2023",
-   
-      skills: ["HTML/CSS", "JavaScript", "React", "Node.js", "Express"],
+
+      skills: ["React","API", "JavaScript", "React", "Node.js", "Express"],
       icon: Code,
       verified: true,
       description: "Comprehensive full-stack development curriculum covering front-end and back-end technologies.",
-      image: "/Web.png"
+      image: "/code.png"
     },
     {
       title: "Machine Learning Specialization",
@@ -887,12 +887,15 @@ function page() {
             viewport={{ once: true }}
             className="mb-16"
           >
-            <h3 className="text-3xl font-bold text-white mb-12 text-center">
+            <h3 className="text-2xl md:text-3xl font-bold text-white mb-8 md:mb-12 text-center">
               Key Achievements
             </h3>
             <div className="relative">
-              {/* Timeline Line */}
-              <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-indigo-500 to-purple-500 rounded-full"></div>
+              {/* Timeline Line - Hidden on mobile, visible on desktop */}
+              <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-indigo-500 to-purple-500 rounded-full"></div>
+              
+              {/* Mobile Timeline Line - Left aligned */}
+              <div className="md:hidden absolute left-6 top-0 h-full w-1 bg-gradient-to-b from-indigo-500 to-purple-500 rounded-full"></div>
               
               {achievements.map((achievement, index) => (
                 <motion.div
@@ -901,9 +904,29 @@ function page() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.2, duration: 0.6 }}
                   viewport={{ once: true }}
-                  className={`relative flex items-center mb-12 ${index % 2 === 0 ? 'justify-start' : 'justify-end'}`}
+                  className={`relative flex items-center mb-8 md:mb-12 ${
+                    // Mobile: all items left-aligned, Desktop: alternating
+                    index % 2 === 0 ? 'md:justify-start justify-start' : 'md:justify-end justify-start'
+                  }`}
                 >
-                  <div className={`w-1/2 ${index % 2 === 0 ? 'pr-8' : 'pl-8'}`}>
+                  {/* Mobile Layout */}
+                  <div className="md:hidden w-full pl-16">
+                    <div className="bg-white/5 backdrop-blur-xl rounded-xl p-4 border border-white/10">
+                      <div className="flex items-start space-x-3">
+                        <div className="p-2 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-lg flex-shrink-0">
+                          <achievement.icon className="w-5 h-5 text-white" />
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <span className="text-indigo-400 text-xs font-semibold">{achievement.year}</span>
+                          <h4 className="text-base font-bold text-white mb-1">{achievement.title}</h4>
+                          <p className="text-gray-300 text-xs leading-relaxed">{achievement.description}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Desktop Layout */}
+                  <div className={`hidden md:block w-1/2 ${index % 2 === 0 ? 'pr-8' : 'pl-8'}`}>
                     <div className={`bg-white/5 backdrop-blur-xl rounded-2xl p-6 border border-white/10 ${index % 2 === 0 ? 'ml-auto' : 'mr-auto'}`}>
                       <div className="flex items-start space-x-4">
                         <div className="p-3 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-xl">
@@ -918,8 +941,12 @@ function page() {
                     </div>
                   </div>
                   
-                  {/* Timeline Node */}
-                  <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full border-4 border-slate-900"></div>
+                  {/* Timeline Nodes */}
+                  {/* Mobile Timeline Node */}
+                  <div className="md:hidden absolute left-5 w-3 h-3 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full border-2 border-slate-900"></div>
+                  
+                  {/* Desktop Timeline Node */}
+                  <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full border-4 border-slate-900"></div>
                 </motion.div>
               ))}
             </div>
