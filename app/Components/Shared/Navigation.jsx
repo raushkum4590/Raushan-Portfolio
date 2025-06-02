@@ -4,10 +4,10 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { Github, Linkedin, Mail, ArrowLeft } from 'lucide-react'
 
-function Navigation({ currentPage = 'home', showBackButton = false }) {
-  const navItems = [
+function Navigation({ currentPage = 'home', showBackButton = false }) {  const navItems = [
     { name: 'Home', href: '/', id: 'home' },
     { name: 'About', href: '/about', id: 'about' },
+    { name: 'Certificates', href: '/#certificates', id: 'certificates' },
     { name: 'Projects', href: '/projects', id: 'projects' },
     { name: 'Contact', href: '#contact', id: 'contact' }
   ]

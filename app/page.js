@@ -7,7 +7,9 @@ import {
   User, GraduationCap, Award, Brain, Target, Coffee, Book, Lightbulb,
   Download, ExternalLink, MapPin, Calendar, Phone, Folder, Eye,
   Sparkles, Zap, Globe, Menu, X, Monitor, Keyboard, Mouse, Wifi,
-  Server, FileCode, GitBranch, Package, Settings, Layers
+  Server, FileCode, GitBranch, Package, Settings, Layers,
+  Trophy, Briefcase, Shield, Certificate, FileText, Star, CheckCircle,
+  Medal, Bookmark
 } from 'lucide-react'
 
 // 2D Programmer Illustrations Components
@@ -312,6 +314,7 @@ function Navigation() {
             { name: 'Home', id: 'home' },
             { name: 'About', id: 'about' },
             { name: 'Skills', id: 'skills' },
+            { name: 'Certificates', id: 'certificates' },
             { name: 'Projects', id: 'projects' },
             { name: 'Contact', id: 'contact' }
           ].map((item) => (
@@ -368,6 +371,7 @@ function Navigation() {
               { name: 'Home', id: 'home' },
               { name: 'About', id: 'about' },
               { name: 'Skills', id: 'skills' },
+              { name: 'Certificates', id: 'certificates' },
               { name: 'Projects', id: 'projects' },
               { name: 'Contact', id: 'contact' }
             ].map((item) => (
@@ -492,18 +496,20 @@ function page() {
   ]
 
   const achievements = [
-    {
-      year: "2024",
-      title: "Senior Full Stack Developer",
-      description: "Leading development of enterprise web applications",
-      icon: Award
+   
+     {
+      year: "2024", 
+      title: "Hackathon",
+      description: "Participated in Navikshaa Dev Battleground Hackathon for innovative web development solution",
+      icon: Trophy
     },
-    {
-      year: "2023", 
-      title: "Full Stack Certification",
-      description: "Advanced MERN stack and cloud deployment expertise",
-      icon: Brain
+     {
+      year: "2023",
+      title: "Internship",
+      description: "Full Stack  Development Intern at leading Edunet Foundation",
+      icon: Briefcase
     },
+   
     {
       year: "2022",
       title: "React Specialist",
@@ -515,6 +521,75 @@ function page() {
       title: "First Production App",
       description: "Deployed first full-stack application to production",
       icon: GraduationCap
+    }
+  ]
+
+  const certificates = [
+    {
+      title: "Hackathon",
+      issuer: "Navikshaa Dev Battleground Hackathon",
+      date: "2025",
+    
+      skills: ["React", "JavaScript", "Node.js", "SQL"],
+      icon: Certificate,
+      verified: true,
+      description: "Comprehensive program covering React fundamentals, advanced React concepts, and front-end development best practices.",
+      image:"/hack.png"
+    },
+    {
+      title: "Internship",
+      issuer: "Edunet Foundation",
+      date: "2025",
+      
+      credentialId: "AICTENG25_34173",
+      skills: ["React", "Mongodb","Nodejs", "Express", "JavaScript"],
+      icon: Shield,
+      verified: true,
+      description: "Foundational understanding of Full Stack Web Development.",
+      image: "/intern.png"
+    },
+    {
+      title: "Ai and Cloud Computing",
+      issuer: "Edunet Foundation",
+      date: "2024",
+      skills: ["AI", "Data Science", "Machine Learning", "Cloud Computing"],
+      icon: FileText,
+      verified: true,
+      description: "Foundational understanding of IBM cloud concepts, services, security, architecture, pricing, and support.",
+      image: "/ibm.png"
+    },
+    {
+      title: "Internship",
+      issuer: "A Joint Csr Initiative of Microsoft and  SAP",
+      date: "2024",
+   
+      skills: ["Python", "TensorFlow", "Neural Networks", "Deep Learning"],
+      icon: Brain,
+      verified: true,
+      description: "Artificial Intelligence concepts including supervised learning, unsupervised learning, and neural networks.",
+      image: "/Ai.png"
+    },
+    {
+      title: "Recommendation Letter",
+      issuer: "CodeClause",
+      date: "2023",
+   
+      skills: ["HTML/CSS", "JavaScript", "React", "Node.js", "Express"],
+      icon: Code,
+      verified: true,
+      description: "Comprehensive full-stack development curriculum covering front-end and back-end technologies.",
+      image: "/Web.png"
+    },
+    {
+      title: "Machine Learning Specialization",
+      issuer: "Edunet Foundation",
+      date: "2024",
+
+      skills: ["Python", "TensorFlow", "Neural Networks", "Deep Learning"],
+      icon: Brain,
+      verified: true,
+      description: "Advanced machine learning concepts including supervised learning, unsupervised learning, and neural networks.",
+      image: "/llm.png"
     }
   ]
 
@@ -812,12 +887,10 @@ function page() {
             viewport={{ once: true }}
             className="mb-16"
           >
-            <h3 className="text-2xl md:text-3xl font-bold text-white mb-8 md:mb-12 text-center">
+            <h3 className="text-3xl font-bold text-white mb-12 text-center">
               Key Achievements
             </h3>
-            
-            {/* Desktop Timeline Layout (md and up) */}
-            <div className="hidden md:block relative">
+            <div className="relative">
               {/* Timeline Line */}
               <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-indigo-500 to-purple-500 rounded-full"></div>
               
@@ -831,7 +904,7 @@ function page() {
                   className={`relative flex items-center mb-12 ${index % 2 === 0 ? 'justify-start' : 'justify-end'}`}
                 >
                   <div className={`w-1/2 ${index % 2 === 0 ? 'pr-8' : 'pl-8'}`}>
-                    <div className={`bg-white/5 backdrop-blur-xl rounded-2xl p-6 border border-white/10 hover:border-white/20 transition-all duration-300 ${index % 2 === 0 ? 'ml-auto' : 'mr-auto'}`}>
+                    <div className={`bg-white/5 backdrop-blur-xl rounded-2xl p-6 border border-white/10 ${index % 2 === 0 ? 'ml-auto' : 'mr-auto'}`}>
                       <div className="flex items-start space-x-4">
                         <div className="p-3 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-xl">
                           <achievement.icon className="w-6 h-6 text-white" />
@@ -850,37 +923,207 @@ function page() {
                 </motion.div>
               ))}
             </div>
+          </motion.div>
+        </div>
+      </section>
 
-            {/* Mobile Layout (below md) */}
-            <div className="block md:hidden space-y-6">
-              {achievements.map((achievement, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, x: -50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.15, duration: 0.6 }}
-                  viewport={{ once: true }}
-                  className="relative"
-                >
-                  <div className="bg-white/5 backdrop-blur-xl rounded-2xl p-4 sm:p-6 border border-white/10 hover:border-white/20 transition-all duration-300">
-                    <div className="flex items-start space-x-3 sm:space-x-4">
-                      <div className="flex-shrink-0 p-2 sm:p-3 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-xl">
-                        <achievement.icon className="w-4 h-4 sm:w-6 sm:h-6 text-white" />
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
-                          <span className="text-indigo-400 text-xs sm:text-sm font-semibold">{achievement.year}</span>
+      {/* Certificates Section */}
+      <section id="certificates" className="py-20 px-6 relative">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+              Certificates & 
+              <span className="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
+                {" "}Credentials
+              </span>
+            </h2>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+              Professional certifications and credentials that validate my expertise across various technologies and platforms.
+            </p>
+          </motion.div>
+
+          {/* State for certificate interactions */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {certificates.map((certificate, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1, duration: 0.6 }}
+                viewport={{ once: true }}
+                className="group bg-white/10 backdrop-blur-lg rounded-xl overflow-hidden border border-white/20 hover:border-white/40 transition-all duration-300"
+                onHoverStart={() => setExpandedProject(index + 1000)} // Use different range for certificates
+                onHoverEnd={() => setExpandedProject(null)}
+              >
+                {/* Certificate Visual Container */}
+                <div className="relative overflow-hidden h-64">
+                  {/* Certificate Background with Icon */}
+                  <motion.div 
+                    className="relative h-full cursor-pointer"
+                    whileHover={{ scale: 1.02 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    {/* Certificate Image */}
+                    <Image
+                      src={certificate.image}
+                      alt={certificate.title}
+                      fill
+                      className="object-cover"
+                    />
+
+                    {/* Hover Overlay with Certificate Details */}
+                    <motion.div
+                      className="absolute inset-0 bg-black/80 backdrop-blur-sm flex flex-col justify-center p-6 z-15"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ 
+                        opacity: expandedProject === index + 1000 ? 1 : 0,
+                        y: expandedProject === index + 1000 ? 0 : 20
+                      }}
+                      transition={{ duration: 0.4, ease: "easeOut" }}
+                      style={{ pointerEvents: expandedProject === index + 1000 ? 'auto' : 'none' }}
+                    >
+                      {/* Certificate Icon */}
+                      <motion.div
+                        className="flex justify-center mb-4"
+                        initial={{ scale: 0, opacity: 0 }}
+                        animate={{ 
+                          scale: expandedProject === index + 1000 ? 1 : 0,
+                          opacity: expandedProject === index + 1000 ? 1 : 0
+                        }}
+                        transition={{ delay: 0.1, duration: 0.3 }}
+                      >
+                        <div className="p-3 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-xl">
+                          
                         </div>
-                        <h4 className="text-base sm:text-lg font-bold text-white mb-2 leading-tight">{achievement.title}</h4>
-                        <p className="text-gray-300 text-sm leading-relaxed">{achievement.description}</p>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  {/* Mobile Timeline Indicator */}
-                  <div className="absolute -left-2 top-4 w-2 h-2 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full"></div>
-                </motion.div>
-              ))}
+                      </motion.div>
+
+                      {/* Certificate Title */}
+                      <motion.h3 
+                        className="text-lg font-bold text-white mb-2 text-center"
+                        initial={{ y: 20, opacity: 0 }}
+                        animate={{ 
+                          y: expandedProject === index + 1000 ? 0 : 20,
+                          opacity: expandedProject === index + 1000 ? 1 : 0
+                        }}
+                        transition={{ delay: 0.2, duration: 0.3 }}
+                      >
+                        {certificate.title}
+                      </motion.h3>
+
+                      {/* Issuer */}
+                      <motion.p 
+                        className="text-indigo-400 font-medium text-sm mb-3 text-center"
+                        initial={{ y: 20, opacity: 0 }}
+                        animate={{ 
+                          y: expandedProject === index + 1000 ? 0 : 20,
+                          opacity: expandedProject === index + 1000 ? 1 : 0
+                        }}
+                        transition={{ delay: 0.3, duration: 0.3 }}
+                      >
+                        Issued by {certificate.issuer}
+                      </motion.p>
+
+                      {/* Description */}
+                      <motion.p 
+                        className="text-gray-300 text-xs leading-relaxed mb-4 text-center line-clamp-3"
+                        initial={{ y: 20, opacity: 0 }}
+                        animate={{ 
+                          y: expandedProject === index + 1000 ? 0 : 20,
+                          opacity: expandedProject === index + 1000 ? 1 : 0
+                        }}
+                        transition={{ delay: 0.4, duration: 0.3 }}
+                      >
+                        {certificate.description}
+                      </motion.p>
+
+                      {/* Skills Tags */}
+                      <motion.div 
+                        className="mb-4"
+                        initial={{ y: 20, opacity: 0 }}
+                        animate={{ 
+                          y: expandedProject === index + 1000 ? 0 : 20,
+                          opacity: expandedProject === index + 1000 ? 1 : 0
+                        }}
+                        transition={{ delay: 0.5, duration: 0.3 }}
+                      >
+                        <div className="flex flex-wrap gap-1 justify-center">
+                          {certificate.skills.slice(0, 5).map((skill, idx) => (
+                            <motion.span
+                              key={idx}
+                              initial={{ scale: 0, opacity: 0 }}
+                              animate={{ 
+                                scale: expandedProject === index + 1000 ? 1 : 0,
+                                opacity: expandedProject === index + 1000 ? 1 : 0
+                              }}
+                              transition={{ delay: 0.6 + idx * 0.05, duration: 0.2 }}
+                              className="px-2 py-1 text-xs bg-gradient-to-r from-indigo-500/20 to-purple-500/20 border border-indigo-400/30 rounded-full text-indigo-300 font-medium"
+                            >
+                              {skill}
+                            </motion.span>
+                          ))}
+                        </div>
+                      </motion.div>
+
+                      {/* Credential ID */}
+                      <motion.div
+                        className="flex justify-center"
+                        initial={{ y: 20, opacity: 0 }}
+                        animate={{ 
+                          y: expandedProject === index + 1000 ? 0 : 20,
+                          opacity: expandedProject === index + 1000 ? 1 : 0
+                        }}
+                        transition={{ delay: 0.7, duration: 0.3 }}
+                      >
+                        <div className="flex items-center space-x-2 bg-white/10 rounded-lg px-3 py-1">
+                          <Bookmark className="w-3 h-3 text-gray-400" />
+                          <span className="text-gray-400 text-xs">ID: {certificate.credentialId}</span>
+                        </div>
+                      </motion.div>
+                    </motion.div>
+                  </motion.div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Certificate Stats */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            viewport={{ once: true }}
+            className="mt-16 text-center"
+          >
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="bg-white/5 backdrop-blur-xl rounded-2xl p-6 border border-white/10">
+                <div className="flex items-center justify-center mb-4">
+                  <Medal className="w-8 h-8 text-yellow-400" />
+                </div>
+                <h3 className="text-2xl font-bold text-white mb-2">{certificates.length}</h3>
+                <p className="text-gray-300">Professional Certificates</p>
+              </div>
+              
+              <div className="bg-white/5 backdrop-blur-xl rounded-2xl p-6 border border-white/10">
+                <div className="flex items-center justify-center mb-4">
+                  <Star className="w-8 h-8 text-indigo-400" />
+                </div>
+                <h3 className="text-2xl font-bold text-white mb-2">100%</h3>
+                <p className="text-gray-300">Verification Rate</p>
+              </div>
+              
+              <div className="bg-white/5 backdrop-blur-xl rounded-2xl p-6 border border-white/10">
+                <div className="flex items-center justify-center mb-4">
+                  <Target className="w-8 h-8 text-purple-400" />
+                </div>
+                <h3 className="text-2xl font-bold text-white mb-2">15+</h3>
+                <p className="text-gray-300">Skills Validated</p>
+              </div>
             </div>
           </motion.div>
         </div>
