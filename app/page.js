@@ -812,10 +812,12 @@ function page() {
             viewport={{ once: true }}
             className="mb-16"
           >
-            <h3 className="text-3xl font-bold text-white mb-12 text-center">
+            <h3 className="text-2xl md:text-3xl font-bold text-white mb-8 md:mb-12 text-center">
               Key Achievements
             </h3>
-            <div className="relative">
+            
+            {/* Desktop Timeline Layout (md and up) */}
+            <div className="hidden md:block relative">
               {/* Timeline Line */}
               <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-indigo-500 to-purple-500 rounded-full"></div>
               
@@ -829,7 +831,7 @@ function page() {
                   className={`relative flex items-center mb-12 ${index % 2 === 0 ? 'justify-start' : 'justify-end'}`}
                 >
                   <div className={`w-1/2 ${index % 2 === 0 ? 'pr-8' : 'pl-8'}`}>
-                    <div className={`bg-white/5 backdrop-blur-xl rounded-2xl p-6 border border-white/10 ${index % 2 === 0 ? 'ml-auto' : 'mr-auto'}`}>
+                    <div className={`bg-white/5 backdrop-blur-xl rounded-2xl p-6 border border-white/10 hover:border-white/20 transition-all duration-300 ${index % 2 === 0 ? 'ml-auto' : 'mr-auto'}`}>
                       <div className="flex items-start space-x-4">
                         <div className="p-3 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-xl">
                           <achievement.icon className="w-6 h-6 text-white" />
@@ -845,6 +847,38 @@ function page() {
                   
                   {/* Timeline Node */}
                   <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full border-4 border-slate-900"></div>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Mobile Layout (below md) */}
+            <div className="block md:hidden space-y-6">
+              {achievements.map((achievement, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, x: -50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.15, duration: 0.6 }}
+                  viewport={{ once: true }}
+                  className="relative"
+                >
+                  <div className="bg-white/5 backdrop-blur-xl rounded-2xl p-4 sm:p-6 border border-white/10 hover:border-white/20 transition-all duration-300">
+                    <div className="flex items-start space-x-3 sm:space-x-4">
+                      <div className="flex-shrink-0 p-2 sm:p-3 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-xl">
+                        <achievement.icon className="w-4 h-4 sm:w-6 sm:h-6 text-white" />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
+                          <span className="text-indigo-400 text-xs sm:text-sm font-semibold">{achievement.year}</span>
+                        </div>
+                        <h4 className="text-base sm:text-lg font-bold text-white mb-2 leading-tight">{achievement.title}</h4>
+                        <p className="text-gray-300 text-sm leading-relaxed">{achievement.description}</p>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Mobile Timeline Indicator */}
+                  <div className="absolute -left-2 top-4 w-2 h-2 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full"></div>
                 </motion.div>
               ))}
             </div>
