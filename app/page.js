@@ -492,7 +492,22 @@ function page() {
       tech: ["React", "openWeather", "Tailwind CSS"],
       image: "/weather.png",
       live: "https://weathers-one-delta.vercel.app/"
-    }
+    },
+     {
+      title: "AI PDF ASSISTANT",
+      description: "AI-powered PDF assistant for document analysis and summarization.",
+      tech: ["React", "Node.js", "OpenAI"],
+      image: "/ai-pdf.png",
+      live: "https://glittering-flan-cea003.netlify.app/"
+    },
+     {
+      title: "AI Interview",
+      description: "AI-powered interview preparation tool with personalized question generation and performance tracking.",
+      tech: ["React", "Node.js", "OpenAI"],
+      image: "/ai-interview.png",
+      live: "https://ai-recruiter-nu.vercel.app/"
+    },
+
   ]
 
   const achievements = [
